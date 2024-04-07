@@ -1,0 +1,20 @@
+name: publish
+
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          docker login ghcr.io -u devecor -p ${{ secrets.GITHUB_TOKEN }}
+          docker buildx build --platform linux/amd64,linux/arm64 --push \
+          -t ghcr.io/devecorsoft/actions-runner:2.315.0 \
+          -t ghcr.io/devecorsoft/actions-runner:2.315.0-git \
+          -t ghcr.io/devecorsoft/actions-runner:2.315.0-git-2.34 \
+          .
