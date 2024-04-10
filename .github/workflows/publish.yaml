@@ -1,7 +1,8 @@
 name: publish-basic
 
 on:
-  push
+  push:
+    - Dockerfile
 
 jobs:
   build:
