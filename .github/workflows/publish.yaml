@@ -1,4 +1,4 @@
-name: publish
+name: publish-basic
 
 on:
   push
@@ -16,6 +16,5 @@ jobs:
           docker buildx create --name mybuilder --bootstrap --use
           docker buildx build --platform linux/amd64,linux/arm64 --push \
           -t ghcr.io/devecorsoft/actions-runner:2.315.0 \
-          -t ghcr.io/devecorsoft/actions-runner:2.315.0-git \
-          -t ghcr.io/devecorsoft/actions-runner:2.315.0-git-2.34 \
+          -t ghcr.io/devecorsoft/actions-runner:2.315.0-basic \
           .
